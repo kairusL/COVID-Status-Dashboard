@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\k-air\\OneDrive\\桌面\\Temp\\vsc\\FinalState\\webapp-proj\\webapp-proj.csproj": {}
+    "D:\\CodeStuff\\Git_WebProject\\COVID-Status-Dashboard\\webapp-proj\\webapp-proj.csproj": {}
   },
   "projects": {
-    "C:\\Users\\k-air\\OneDrive\\桌面\\Temp\\vsc\\FinalState\\webapp-proj\\webapp-proj.csproj": {
+    "D:\\CodeStuff\\Git_WebProject\\COVID-Status-Dashboard\\webapp-proj\\webapp-proj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\k-air\\OneDrive\\桌面\\Temp\\vsc\\FinalState\\webapp-proj\\webapp-proj.csproj",
+        "projectUniqueName": "D:\\CodeStuff\\Git_WebProject\\COVID-Status-Dashboard\\webapp-proj\\webapp-proj.csproj",
         "projectName": "webapp-proj",
-        "projectPath": "C:\\Users\\k-air\\OneDrive\\桌面\\Temp\\vsc\\FinalState\\webapp-proj\\webapp-proj.csproj",
+        "projectPath": "D:\\CodeStuff\\Git_WebProject\\COVID-Status-Dashboard\\webapp-proj\\webapp-proj.csproj",
         "packagesPath": "C:\\Users\\k-air\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\k-air\\OneDrive\\桌面\\Temp\\vsc\\FinalState\\webapp-proj\\obj\\",
+        "outputPath": "D:\\CodeStuff\\Git_WebProject\\COVID-Status-Dashboard\\webapp-proj\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
