@@ -1,0 +1,373 @@
+﻿@model List<CovidData>
+@{
+    ViewData["Title"] = "Covid 19 Report";
+}
+<style>
+
+.main{
+    background-color: grey;
+}
+.display-2 {
+  color: #1e1e2f;
+}
+.cases_t{
+    border-radius: 25px;
+    border-radius: 25px;
+    margin: auto;
+    border: 2px solid grey;
+    padding: 10px;
+    width: 15%;
+    font-size: 40px;
+    color: #666699;
+}
+
+</style>
+
+<body>
+    <div class="text-center">
+        <h1 class="display-2"> COVID-19 (Coronavirus) Updates: Canada </h1>
+    </div>
+</body>
+
+<br>
+<br>
+<br>
+
+<div class="cases_tt">
+    <h1> Cases </h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> Country </th>
+            <th scope="col"> Cumulative Case </th>
+            <th scope="col"> Cases(New) </th>
+            <th scope="col"> Active Cases </th>
+            <th scope="col"> Active Cases(Change) </th>
+            <th scope="col"> Cumulative Deaths </th>
+            <th scope="col"> Deaths(New) </th>
+            <th scope="col"> Cumulative Recovered</th>
+            <th scope="col"> Recovered(New) </th>
+            <th scope="col"> Cumulative Testing </th>
+            <th scope="col"> Testing(New) </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model[0].Province </td>
+            <td>@Model[0].Cumulative_Case </td>
+            <td>@Model[0].Cases </td>
+            <td>@Model[0].ActiveCases </td>
+            <td>@Model[0].ActiveCasesChange </td>
+            <td>@Model[0].Cumulative_Deaths </td>
+            <td>@Model[0].Deaths </td>
+            <td>@Model[0].Cumulative_Recovered</td>
+            <td>@Model[0].Recovered </td>
+            <td>@Model[0].Cumulative_Testing </td>
+            <td>@Model[0].Testing </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="flex" >
+        <div class="card-header">
+            Canada Cumulative Data (Case , Deaths , Recovered)
+        </div>
+        <div class="card-body">
+            <canvas class="my-4 h-25" id="pie"></canvas>
+        </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> Province </th>
+            <th scope="col"> Cumulative Case </th>
+            <th scope="col"> Cases(New) </th>
+            <th scope="col"> Active Cases </th>
+            <th scope="col"> Active Cases(Change) </th>
+            <th scope="col"> Cumulative Deaths </th>
+            <th scope="col"> Deaths(New) </th>
+            <th scope="col"> Cumulative Recovered</th>
+            <th scope="col"> Recovered(New) </th>
+            <th scope="col"> Cumulative Testing </th>
+            <th scope="col"> Testing(New) </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            for (var i = 1; i < Model.Count; ++i)
+            {
+                <tr>
+
+                    <td>@Model[i].Province </td>
+                    <td>@Model[i].Cumulative_Case </td>
+                    <td>@Model[i].Cases </td>
+                    <td>@Model[i].ActiveCases </td>
+                    <td>@Model[i].ActiveCasesChange </td>
+                    <td>@Model[i].Cumulative_Deaths </td>
+                    <td>@Model[i].Deaths </td>
+                    <td>@Model[i].Cumulative_Recovered</td>
+                    <td>@Model[i].Recovered </td>
+                    <td>@Model[i].Cumulative_Testing </td>
+                    <td>@Model[i].Testing </td>
+                </tr>
+            }
+
+        }
+
+    </tbody>
+</table>
+
+
+<div class="flex" >
+        <div class="card-header">
+            Province New Data ( Case , Deaths )
+        </div>
+        <div class="card-body">
+            <canvas class="my-4 h-25" id="bar"></canvas>
+        </div>
+</div>
+
+<br>
+<div class="cases_tt">
+    <h1> Vaccine </h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> Country </th>
+            <th scope="col"> Vaccine Doses(New) </th>
+            <th scope="col"> Cumulative Vaccine Doses </th>
+            <th scope="col"> People Fully Vaccinated(New) </th>
+            <th scope="col"> Cumulative People Fully Vaccinated </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model[0].Province </td>
+            <td>@Model[0].Vaccine_Doses </td>
+            <td>@Model[0].Cumulative_Vaccine_Doses </td>
+            <td>@Model[0].P_Vaccinated </td>
+            <td>@Model[0].Cumulative_Vaccinated </td>
+        </tr>
+
+    </tbody>
+</table>
+<div class="flex" >
+        <div class="card-header">
+            Canada Vaccine Data
+        </div>
+        <div class="card-body">
+            <canvas class="my-4 h-25" id="line"></canvas>
+        </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> Province </th>
+            <th scope="col"> Vaccine Doses(New) </th>
+            <th scope="col"> Cumulative Vaccine Doses </th>
+            <th scope="col"> People Fully Vaccinated(New) </th>
+            <th scope="col"> Cumulative People Fully Vaccinated </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            for (var i = 1; i < Model.Count; ++i)
+            {
+                <tr>
+                    <td>@Model[i].Province </td>
+                    <td>@Model[i].Vaccine_Doses </td>
+                    <td>@Model[i].Cumulative_Vaccine_Doses </td>
+                    <td>@Model[i].P_Vaccinated </td>
+                    <td>@Model[i].Cumulative_Vaccinated </td>
+                </tr>
+            }
+
+        }
+
+    </tbody>
+</table>
+<div class="flex" >
+        <div class="card-header">
+            Province Vaccine Data
+        </div>
+        <div class="card-body">
+            <canvas class="my-4 h-25" id="mixed-chart"></canvas>
+        </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script type="text/javascript">
+
+var piechart = document.getElementById('pie').getContext('2d');
+    var mypiechart = new Chart(piechart, {
+        type: 'pie',
+        data: {
+                labels: ['Cumulative Case', 'Cumulative Deaths','Cumulative Recovered'],
+            datasets: [
+            {
+                label: 'Canada',
+                data: [@Model[0].Cumulative_Case, @Model[0].Cumulative_Deaths, @Model[0].Cumulative_Recovered],
+                backgroundColor: [ '#36a2eb',  '#ffce56',
+                                  '#46548a']
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+
+
+var barchart = document.getElementById('bar').getContext('2d');
+    var mybarchart = new Chart(barchart, {
+        type: 'bar',
+        data: {
+            labels: ['@Model[1].Province','@Model[2].Province','@Model[3].Province',
+                    '@Model[4].Province','@Model[5].Province','@Model[6].Province',
+                    '@Model[7].Province','@Model[8].Province','@Model[9].Province',
+                    '@Model[10].Province','@Model[11].Province','@Model[12].Province',
+                    '@Model[13].Province'],
+            datasets: [{
+                label: 'New Cases',
+                data: [
+                @Model[1].Cases,@Model[2].Cases,@Model[3].Cases,@Model[4].Cases,@Model[5].Cases,@Model[6].Cases,@Model[7].Cases,
+                @Model[8].Cases,@Model[9].Cases,@Model[10].Cases,@Model[11].Cases,@Model[12].Cases,@Model[13].Cases
+                ],
+                backgroundColor: "#84e4ff"
+            },
+            {
+                label: 'New Deaths',
+                data: [
+                @Model[1].Deaths,@Model[2].Deaths,@Model[3].Deaths,@Model[4].Deaths,@Model[5].Deaths,@Model[6].Deaths,@Model[7].Deaths,
+                @Model[8].Deaths,@Model[9].Deaths,@Model[10].Deaths,@Model[11].Deaths,@Model[12].Deaths,@Model[13].Deaths
+                ],
+                backgroundColor: "#ff6384"
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    })
+
+var linechart = document.getElementById('line').getContext('2d');
+    var mylinechart = new Chart(linechart, {
+        type: 'line',
+        data: {
+            labels: ['Vaccine Doses(New)', 'Cumulative Vaccine Dose', 'People Fully Vaccinated(New)', 'Cumulative People Fully Vaccinated'],
+            datasets: [
+            {
+                label: '@Model[0].Province',
+                data: [@Model[0].Vaccine_Doses, @Model[0].Cumulative_Vaccine_Doses, @Model[0].P_Vaccinated,@Model[0].Cumulative_Vaccinated],
+                borderColor: '#ffa85c',
+                fill:false
+            }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    stacked: true
+                }
+            }
+        }
+
+})
+var mixlinechart = document.getElementById('mixed-chart').getContext('2d');
+    var mymixlinechart =new Chart(mixlinechart, {
+    type: 'bar',
+    data: {
+      labels: ['@Model[1].Province','@Model[2].Province','@Model[3].Province',
+                    '@Model[4].Province','@Model[5].Province','@Model[6].Province',
+                    '@Model[7].Province','@Model[8].Province','@Model[9].Province',
+                    '@Model[10].Province','@Model[11].Province','@Model[12].Province',
+                    '@Model[13].Province'],
+      datasets: [
+        {
+          label: "Vaccine Doses(New)",
+          type: "line",
+          borderColor: "#0b5252",
+          data: [@Model[1].Vaccine_Doses,@Model[2].Vaccine_Doses,@Model[3].Vaccine_Doses,@Model[4].Vaccine_Doses,@Model[5].Vaccine_Doses,@Model[6].Vaccine_Doses,@Model[7].Vaccine_Doses,
+                @Model[8].Vaccine_Doses,@Model[9].Vaccine_Doses,@Model[10].Vaccine_Doses,@Model[11].Vaccine_Doses,@Model[12].Vaccine_Doses,@Model[13].Vaccine_Doses],
+          fill: false
+        }, 
+        {
+          label: "Cumulative Vaccine Dose",
+          type: "line",
+          borderColor: "#4b3b82",
+          data: [@Model[1].Cumulative_Vaccine_Doses,@Model[2].Cumulative_Vaccine_Doses,@Model[3].Cumulative_Vaccine_Doses,@Model[4].Cumulative_Vaccine_Doses,@Model[5].Cumulative_Vaccine_Doses,@Model[6].Cumulative_Vaccine_Doses,@Model[7].Cumulative_Vaccine_Doses,
+                @Model[8].Cumulative_Vaccine_Doses,@Model[9].Cumulative_Vaccine_Doses,@Model[10].Cumulative_Vaccine_Doses,@Model[11].Cumulative_Vaccine_Doses,@Model[12].Cumulative_Vaccine_Doses,@Model[13].Cumulative_Vaccine_Doses],
+          fill: false
+        }, 
+                {
+          label: "People Fully Vaccinated(New)",
+          type: "line",
+          borderColor: "#752121",
+          data: [@Model[1].P_Vaccinated,@Model[2].P_Vaccinated,@Model[3].P_Vaccinated,@Model[4].P_Vaccinated,@Model[5].P_Vaccinated,@Model[6].P_Vaccinated,@Model[7].P_Vaccinated,
+                @Model[8].P_Vaccinated,@Model[9].P_Vaccinated,@Model[10].P_Vaccinated,@Model[11].P_Vaccinated,@Model[12].P_Vaccinated,@Model[13].P_Vaccinated],
+          fill: false
+        }, 
+        {
+          label: "Cumulative People Fully Vaccinated",
+          type: "line",
+          borderColor: "#a8838b",
+          data: [@Model[1].Cumulative_Vaccinated,@Model[2].Cumulative_Vaccinated,@Model[3].Cumulative_Vaccinated,@Model[4].Cumulative_Vaccinated,@Model[5].Cumulative_Vaccinated,@Model[6].Cumulative_Vaccinated,@Model[7].Cumulative_Vaccinated,
+                @Model[8].Cumulative_Vaccinated,@Model[9].Cumulative_Vaccinated,@Model[10].Cumulative_Vaccinated,@Model[11].Cumulative_Vaccinated,@Model[12].Cumulative_Vaccinated,@Model[13].Cumulative_Vaccinated],
+          fill: false
+        }, 
+        {
+          label: "Vaccine Doses(New)",
+          type: "bar",
+          backgroundColor: "#0b5252",
+          data: [@Model[1].Vaccine_Doses,@Model[2].Vaccine_Doses,@Model[3].Vaccine_Doses,@Model[4].Vaccine_Doses,@Model[5].Vaccine_Doses,@Model[6].Vaccine_Doses,@Model[7].Vaccine_Doses,
+                @Model[8].Vaccine_Doses,@Model[9].Vaccine_Doses,@Model[10].Vaccine_Doses,@Model[11].Vaccine_Doses,@Model[12].Vaccine_Doses,@Model[13].Vaccine_Doses],
+        }, 
+        {
+          label: "Cumulative Vaccine Dose",
+          type: "bar",
+          backgroundColor: "#4b3b82",
+          data: [@Model[1].Cumulative_Vaccine_Doses,@Model[2].Cumulative_Vaccine_Doses,@Model[3].Cumulative_Vaccine_Doses,@Model[4].Cumulative_Vaccine_Doses,@Model[5].Cumulative_Vaccine_Doses,@Model[6].Cumulative_Vaccine_Doses,@Model[7].Cumulative_Vaccine_Doses,
+                @Model[8].Cumulative_Vaccine_Doses,@Model[9].Cumulative_Vaccine_Doses,@Model[10].Cumulative_Vaccine_Doses,@Model[11].Cumulative_Vaccine_Doses,@Model[12].Cumulative_Vaccine_Doses,@Model[13].Cumulative_Vaccine_Doses]
+        },
+        {
+          label: "People Fully Vaccinated(New)",
+          type: "bar",
+          backgroundColor: "#752121",
+          data: [@Model[1].P_Vaccinated,@Model[2].P_Vaccinated,@Model[3].P_Vaccinated,@Model[4].P_Vaccinated,@Model[5].P_Vaccinated,@Model[6].P_Vaccinated,@Model[7].P_Vaccinated,
+                @Model[8].P_Vaccinated,@Model[9].P_Vaccinated,@Model[10].P_Vaccinated,@Model[11].P_Vaccinated,@Model[12].P_Vaccinated,@Model[13].P_Vaccinated],
+        }, 
+        {
+          label: "Cumulative People Fully Vaccinated",
+          type: "bar",
+          backgroundColor: "#a8838b",
+          data: [@Model[1].Cumulative_Vaccinated,@Model[2].Cumulative_Vaccinated,@Model[3].Cumulative_Vaccinated,@Model[4].Cumulative_Vaccinated,@Model[5].Cumulative_Vaccinated,@Model[6].Cumulative_Vaccinated,@Model[7].Cumulative_Vaccinated,
+                @Model[8].Cumulative_Vaccinated,@Model[9].Cumulative_Vaccinated,@Model[10].Cumulative_Vaccinated,@Model[11].Cumulative_Vaccinated,@Model[12].Cumulative_Vaccinated,@Model[13].Cumulative_Vaccinated]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Province Vaccine Data'
+      },
+      legend: { display: false }
+    }
+})
+
+</script>
